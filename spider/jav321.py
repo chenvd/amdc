@@ -31,8 +31,12 @@ class Jav321Spider(Spider):
                 meta.outline = outline.text.replace("\n", "")
                 brs = outline.xpath('./br')
                 if brs:
-                    meta.outline += "".join(map(lambda i: i.tail, brs))
-
+                    extra_outline = "".join(map(lambda i: i.tail, brs))
+                    hr_index = extra_outline.find("----------------------")
+                    if hr_index != -1:
+                        meta.outline += (extra_outline[0:hr_index])
+                    else:
+                        meta.outline += extra_outline
         return meta
 
     def get_html_no(self, url):
