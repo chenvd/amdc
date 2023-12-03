@@ -18,10 +18,10 @@ def save_images(poster_url, number, save_path):
 
     poster_image = cutter.cut(fanart)
     poster = badge.tags(poster_image, number)
-    thumbs = badge.tags(fanart, number)
+    thumb = badge.tags(fanart, number)
 
     cv.imwrite(os.path.join(save_path, f"{number.file_name}-fanart{extension}"), fanart)
     cv.imwrite(os.path.join(save_path, f"{number.file_name}-poster{extension}"), poster)
-    cv.imwrite(os.path.join(save_path, f"{number.file_name}-thumbs{extension}"), thumbs)
+    cv.imwrite(os.path.join(save_path, f"{number.file_name}-thumb{extension}"), thumb)
 
     return extension
