@@ -14,11 +14,11 @@ class Jav321Spider(Spider):
 
     def get_info(self):
         url = self.generate_url()
-        response = requests.get(url, allow_redirects=False)
-        html = etree.HTML(response.text)
+        no = self.get_html_no(url)
+        if not no:
+            no = self.get_html_no(urljoin(self.host, "/video/" + self.num))
 
-        no = html.xpath("//small")
-        if not no or no[0].text.strip() != self.num.lower():
+        if not no:
             raise SpiderException('未找到匹配影片')
 
         meta = Meta()
@@ -27,9 +27,20 @@ class Jav321Spider(Spider):
         outline_element = no[0].xpath("./../../..//div[@class='row']")
         if len(outline_element) > 0:
             outline = outline_element[-1].xpath("./div")[0]
-            meta.outline = outline.text
+            meta.outline = outline.text.replace("\n", "")
+            brs = outline.xpath('./br')
+            if brs:
+                meta.outline += "".join(map(lambda i: i.tail, brs))
 
         return meta
+
+    def get_html_no(self, url):
+        response = requests.get(url, allow_redirects=False)
+        html = etree.HTML(response.text)
+
+        no = html.xpath("//small")
+        if no and no[0].text.strip() == self.num.lower():
+            return no
 
     def generate_url(self):
         parts = self.num.split("-")

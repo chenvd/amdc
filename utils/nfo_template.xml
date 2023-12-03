@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <movie>
-    <title>一生入院したくなるほどの芸能人並み美人ナース-射精寸前の全力イカセご奉仕ラッシュ59連発！-IDBD-993</title>
+    <title>{{ meta.title }}-{{ meta.num }}</title>
     <set>
     </set>
     <studio>{{ meta.maker }}</studio>
@@ -28,7 +28,9 @@
     {% endfor %}
     <tag>製作:{{ meta.maker }}</tag>
     <tag>發行:{{ meta.publisher }}</tag>
-    <genre>系列:{{ meta.series }}</genre>
+    {% if meta.series %}
+    <tag>系列:{{ meta.series }}</tag>
+    {% endif %}
     {% for tag in meta.tags %}
     <genre>{{ tag }}</genre>
     {% endfor %}

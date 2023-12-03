@@ -24,8 +24,11 @@ class DmmSpider(Spider):
         html = etree.HTML(response.text)
         outline_element = html.xpath("//div[@class='clear']/following-sibling::div[1]")
         if outline_element:
-            outline = outline_element[0].text.replace("\n", "")
-            meta.outline = outline
+            outline = outline_element[0]
+            meta.outline = outline.text.replace("\n", "")
+            brs = outline.xpath('./br')
+            if brs:
+                meta.outline += "".join(map(lambda i: i.tail, brs))
 
         return meta
 
