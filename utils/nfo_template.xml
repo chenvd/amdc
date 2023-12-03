@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<movie>
+    <title>一生入院したくなるほどの芸能人並み美人ナース-射精寸前の全力イカセご奉仕ラッシュ59連発！-IDBD-993</title>
+    <set>
+    </set>
+    <studio>{{ meta.maker }}</studio>
+    <year>{{ meta.premiered.split("-")[0] }}</year>
+    <rating>{{ meta.rating }}</rating>
+    <director>{{ meta.director }}</director>
+    <outline>{{ meta.outline }}</outline>
+    <plot>{{ meta.outline }}</plot>
+    <runtime>{{ meta.runtime }}</runtime>
+    <poster>{{ file_name }}-poster{{ image_extension }}</poster>
+    <thumb>{{ file_name }}-thumb{{ image_extension }}</thumb>
+    <fanart>{{ file_name }}-fanart{{ image_extension }}</fanart>
+    {% for actor in meta.actors %}
+    <actor>
+        <name>{{ actor.name }}</name>
+        <thumb>{{ actor.thumb }}</thumb>
+    </actor>
+    {% endfor %}
+    <maker>{{ meta.maker }}</maker>
+    <maker>{{ meta.publisher }}</maker>
+    <label>
+    </label>
+    {% for tag in meta.tags %}
+    <tag>{{ tag }}</tag>
+    {% endfor %}
+    <tag>製作:{{ meta.maker }}</tag>
+    <tag>發行:{{ meta.publisher }}</tag>
+    <genre>系列:{{ meta.series }}</genre>
+    {% for tag in meta.tags %}
+    <genre>{{ tag }}</genre>
+    {% endfor %}
+    <genre>製作:{{ meta.maker }}</genre>
+    <genre>發行:{{ meta.publisher }}</genre>
+    <genre>系列:{{ meta.series }}</genre>
+    <num>{{ meta.num }}</num>
+    <premiered>{{ meta.premiered }}</premiered>
+    <release>{{ meta.premiered }}</release>
+    <cover>{{ meta.cover }}</cover>
+    <website>{{ meta.website }}</website>
+</movie>
