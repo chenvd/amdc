@@ -27,10 +27,11 @@ class Jav321Spider(Spider):
         outline_element = no[0].xpath("./../../..//div[@class='row']")
         if len(outline_element) > 0:
             outline = outline_element[-1].xpath("./div")[0]
-            meta.outline = outline.text.replace("\n", "")
-            brs = outline.xpath('./br')
-            if brs:
-                meta.outline += "".join(map(lambda i: i.tail, brs))
+            if outline.text:
+                meta.outline = outline.text.replace("\n", "")
+                brs = outline.xpath('./br')
+                if brs:
+                    meta.outline += "".join(map(lambda i: i.tail, brs))
 
         return meta
 

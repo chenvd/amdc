@@ -68,7 +68,7 @@ def scrapy(path, file_name):
     logger.info("NFO文件生成成功!")
 
     save_file = os.path.join(save_path, f'{number.file_name}.{number.extension}')
-    if os.path.exists(save_path) and os.stat(save_path).st_size == os.stat(path).st_size:
+    if os.path.exists(save_file) and os.stat(save_file).st_size == os.stat(path).st_size:
         logger.info("影片文件已存在且大小相同，已跳过复制!")
         return
 
