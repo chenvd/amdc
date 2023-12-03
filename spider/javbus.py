@@ -36,7 +36,7 @@ class JavbusSpider(Spider):
 
         runtime_element = html.xpath("//span[text()='長度:']")
         if runtime_element:
-            runtime = runtime_element[0].tail
+            runtime = runtime_element[0].tail.strip()
             runtime = runtime.replace("分鐘", "")
             meta.runtime = runtime
 

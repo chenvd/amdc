@@ -5,10 +5,10 @@
     </set>
     <studio>{{ meta.maker }}</studio>
     <year>{{ meta.premiered.split("-")[0] }}</year>
-    <rating>{{ meta.rating }}</rating>
-    <director>{{ meta.director }}</director>
-    <outline>{{ meta.outline }}</outline>
-    <plot>{{ meta.outline }}</plot>
+    <rating>{{ meta.rating or '' }}</rating>
+    <director>{{ meta.director or '' }}</director>
+    <outline>{{ meta.outline or '' }}</outline>
+    <plot>{{ meta.outline or '' }}</plot>
     <runtime>{{ meta.runtime }}</runtime>
     <poster>{{ file_name }}-poster{{ image_extension }}</poster>
     <thumb>{{ file_name }}-thumb{{ image_extension }}</thumb>
@@ -36,7 +36,9 @@
     {% endfor %}
     <genre>製作:{{ meta.maker }}</genre>
     <genre>發行:{{ meta.publisher }}</genre>
+    {% if meta.series %}
     <genre>系列:{{ meta.series }}</genre>
+    {% endif %}
     <num>{{ meta.num }}</num>
     <premiered>{{ meta.premiered }}</premiered>
     <release>{{ meta.premiered }}</release>
