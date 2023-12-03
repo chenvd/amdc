@@ -12,7 +12,7 @@ def parse(file_name):
     if matched:
         groups = matched.groups()
         number = f'{groups[0]}-{groups[1]}'.upper()
-        extension = groups[5]
+        extension = file_name.split('.')[-1]
 
         if extension not in extensions:
             return None
