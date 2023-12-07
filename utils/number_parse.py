@@ -7,6 +7,8 @@ extensions = ['mp4', 'avi', 'rmvb', 'mkv']
 
 def parse(file_name):
     file_name = file_name.replace('_', '-').lower()
+    if '@' in file_name:
+        file_name = file_name.split("@")[-1]
     pattern = re.compile(r"([a-z]{3,})-?(\d{3,})((-uncensored|-leak)*)-?(ch|uc|c|u|)?-?\w*\.(\w+)")
     matched = pattern.search(file_name)
     if matched:
